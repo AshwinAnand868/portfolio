@@ -1,0 +1,1073 @@
+@function produce-stars($screen-size, $total-stars, $color){
+
+    $offset-x : random($screen-size);
+    $offset-y : random($screen-size);
+
+    $stars : '#{$offset-x}px #{$offset-y}px #{$color}';
+
+    @for $i from 1 through $total-stars {
+
+        $offset-x : random($screen-size);
+        $offset-y : random($screen-size);
+
+        $stars : '#{$stars}, #{$offset-x}px #{$offset-y}px #{$color}';
+
+    }
+    @return unquote($stars);
+}
+
+@mixin stars-common-content($screen-width, $total-stars, $color){
+    background: transparent;
+    box-shadow: produce-stars($screen-width, $total-stars, $color);
+}
+
+.stars {
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+#stars-group-1 {
+    @include stars-common-content(1800, 200,#c49952);
+    width: 1px;
+    height: 1px;
+    animation: risingStars 50s linear infinite;
+}
+
+#stars-group-2{
+    @include stars-common-content(1800, 200,#c49952);
+    width: 2px;
+    height: 2px;;
+    animation: risingStars 100s linear infinite;
+}
+
+#stars-group-3{
+    @include stars-common-content(1800, 100,#c49952);
+    width: 3px;
+    height: 3px;
+    animation: risingStars 150s linear infinite;
+}
+
+
+#stars-group-4{
+    @include stars-common-content(1800, 200,#c49952);
+    width: 1px;
+    height: 1px;
+    animation: risingStars 600s linear infinite;
+}
+
+@keyframes risingStars {
+    from{
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateY(-2000px);
+    }
+}
+
+
+*{
+    margin : 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    min-height: 100%;
+}
+
+.navbar-brand{
+    font-size : 2rem !important;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #fff724 !important;
+}
+
+.nav-item {  
+    margin: 0 13px;
+}
+
+.nav-link {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px !important;
+}
+
+.navbarDark {
+    background-color: black;
+}
+
+.fa-bars {
+    color: #fff;
+    font-size: 30px;
+}
+
+.offcanvas.show li a{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 40px !important;
+}
+
+.offcanvas.show li:hover {
+    background-color: rgb(40, 45, 50);
+}
+
+.btn-close {
+    outline: none;
+}
+
+/**************** HOME ******************/
+.home {
+    background-color: black;
+    position: relative;
+}
+
+.intro {
+    position: absolute;
+    top: 40%;
+}
+
+.welcome-text{
+    font-size: 5vw;
+    white-space: nowrap;    
+}
+
+.profession{
+    font-size: 3vw;
+    white-space: nowrap;  
+}
+
+.intro-text {
+    text-align: center;
+}
+
+/** below animation were understood and designed from Code Pen - https://codepen.io/jakejarvis/pen/pBZWZw by Jake Jarvis **/
+.waving-hand {
+    animation: wavingHandAnimation 3s linear infinite;
+    transform-origin: 70% 70%;      
+    display: inline-block;
+}
+
+
+@keyframes wavingHandAnimation {
+    0%{
+        transform: rotate(0deg);
+    }
+    10%{
+        transform: rotate(15deg);
+    }
+    20%{
+        transform: rotate(-8deg);
+    }
+    30%{
+        transform: rotate(15deg);
+    }
+    40%{
+        transform: rotate(-8deg);
+    }
+    50%{
+         transform: rotate(15deg)
+    }
+    60%{ 
+        transform: rotate( 0.0deg)
+    }  
+    100%{ 
+        transform: rotate( 0.0deg)
+    }
+}
+
+span.auto-type {
+    color: #fff724;
+}
+
+/* variables */
+$offcanvas-horizontal-width: 100vw !important;
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+
+/**************** ABOUT ******************/
+.about {
+    padding: 50px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(18,19,25,1) 38%, rgba(30,32,42,1) 82%);
+}
+
+.about-myself {
+    width: 70% !important;
+    background-color: rgb(207, 195, 195);
+    padding: 30px;
+    box-shadow: 0px 0px 10px 12px #d06e0c;
+}
+
+.about-heading {
+    font-weight: bold;
+    padding-left: 36px;
+    color: #6c3804;
+}
+
+.about-myself .about-body{
+    text-align: justify;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: #8f4b06;
+}
+
+.quote {
+ text-align: center;
+ font-size: 2rem;
+}
+
+.contact-link-about {
+    display: inline-block;
+    font-weight: bold;
+    color: #6c3804;
+    text-decoration: none;
+    position: relative;
+    margin-left: 36px;
+    padding: 0.25rem;
+    border-bottom: dotted;
+}
+
+.contact-link-about::after {
+    content: '';
+    position: absolute;
+    margin-right: 42px;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #8f4b06;
+    transition: width 0.25s ease-out;
+}
+
+.contact-link-about:hover {
+    color:#6c3804;
+    border: 0px;
+}
+
+.contact-link-about:hover:after {
+    width: 100%;
+}
+
+@media only screen and (min-width: 1000px){
+    .welcome-text {
+        font-size: 4vw;
+    }
+
+    .profession {
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    .about-myself {
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 650px) {
+    .contact-link-about:hover:after {
+        width: 90%;
+    }
+}
+
+/**************** SKILLS ******************/
+
+.skills {
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-wrapper-heading {
+    background-color: #1e202a;
+    color:white;
+    text-align: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.skills-wrapper-heading h1 {
+    margin: 0;
+}
+
+
+.skills-wrapper {
+    margin-top: 0;
+    height: inherit;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto;
+}
+
+.drawers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 150px);
+    column-gap: 20px;
+    row-gap: 40px;
+    height: inherit;
+    padding: 40px;
+    background-color: #1e202a;
+}
+
+.drawer {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #303342;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 6px solid #714f2d;
+}
+
+.drawer-tag {
+    color: white;
+    position: absolute;
+    margin-bottom: 90px; 
+    font-size: 1vw;
+}
+
+.handle {
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #714f2d;
+    box-shadow: 0px 2px 4px 1px #000;
+    border: 0;
+}
+
+.opened {
+    border: 1px solid #6c4116;
+    box-shadow: 0 20px 15px 5px rgba(0,0,0, 0.3);
+    transition: transform 0.6s ease-in-out;
+    transform: scale(1.05);
+}
+
+.focused-skills {  
+    background: linear-gradient(169deg, rgba(30,32,42,1) 0%, rgba(18,19,25,1) 28%, rgba(21,22,29,1) 70%);
+    display: flex;
+    justify-content: center;
+}
+
+.bulb {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    background: #444;
+    border-radius: 50%;
+    margin-top: 200px;
+}
+
+.bulb::before {
+     content: '';
+     position: absolute;
+     height: 80px;
+     width: 35px;
+     background-color: #444;
+     left: 22.5px;
+     top: -50px;
+     border-top: 30px solid #000;
+     border-radius: 12px;
+}
+
+.bulb span:nth-child(1){
+    position: absolute;
+    top: -16px;
+    left: -2.5px;
+    transform: rotate(342deg);
+    height: 30px;
+    width: 28px;
+    background: transparent;
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 0 10px #444;
+}
+
+.bulb span:nth-child(2){
+    position: absolute;
+    top: -16px;
+    right: -3.5px;
+    transform: rotate(110deg);
+    height: 30px;
+    width: 28px;
+    background: transparent;
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 1px 10px #444;
+}
+
+.wire {
+    position: absolute;
+    left: calc(80% - 2px);
+    width: 4px;
+    height: 200px;
+    background: #000;
+}
+
+.switch-board {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: whitesmoke;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #000;
+    border-radius: 10px;
+}
+
+.switch-board .switch {
+    position: relative;
+    width: 25px;
+    height: 35px;
+    background-color: #777;
+    border-radius: 6px;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.switch-board .switch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 85%;
+    width: 100%;
+    background-color: white;
+    border-radius: 4px;
+}
+
+
+.on .switch::before {
+    top: 5px;
+}
+
+div.on {
+    background-image: radial-gradient( #1e202a 30%, #111); 
+}
+
+div.on .bulb::after {
+    content: "";
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(30px);
+}
+
+
+#clickAudio {
+    display: none;
+}
+
+.switch-not-on-alert {
+    display: none;
+    position: absolute;
+    top: 400px; 
+    font-size: 20px;
+    color: red;
+}
+
+.a-skill {
+    color: white;
+    display: none;
+}
+
+.a-skill h6 {
+    text-align: center;
+}
+
+.show {
+    display: block !important;
+}
+
+#fE .js-logo, #frmks .dotnet-logo, #dbs .mysql-logo {
+    position: absolute;
+    top: 150px;
+    left: 65%;
+}
+
+#fE .html5-logo, #frmks .angular-logo, #dbs .postgre-logo, #sc .git-logo {
+    position: absolute;
+    top: 300px;
+    left: 65%;
+}
+
+#fE .css3-logo, #frmks .alertifyJS-logo, #dbs .oracle-logo {
+    position: absolute;
+    top: 450px;
+    left: 65%;
+}
+
+#fE .react-logo, #sc .github-logo {
+    position: absolute;
+    top: 450px;
+    right: 270px;
+}
+
+#fE .angular-logo, #dbs .mongo-db-logo {
+    position: absolute;
+    top: 150px;
+    right: 90px;
+}
+
+#fE .typescript-logo, #frmks .rest-api-logo, #dbs .db2-logo, #sc .bitbucket-logo {
+    position: absolute;
+    top: 300px;
+    right: 75px;
+}
+
+#fE .razor-logo {
+    position: absolute;
+    top: 450px;
+    right: 90px;
+}
+
+
+#ool .csharp-logo, #bE .csharp-logo, #srvrs .weblogic-logo{
+    position: absolute;
+    top: 221px;
+    left: 66%;
+}
+
+#ool .java-logo, #bE .java-logo {
+    position: absolute;
+    top: 470px;
+    left: 66%;
+}
+
+
+#srvrs .weblogic-logo{
+    position: absolute;
+    top: 190px;
+    left: 64%;
+}
+
+#srvrs .jboss-logo {
+    position: absolute;
+    top: 470px;
+    left: 64%;
+}
+
+#srvrs .jenkins-logo {
+    position: absolute;
+    top: 190px;
+    right: 75px;
+}
+
+#srvrs .apache-http-server-logo {
+    position: absolute;
+    top: 470px;
+    right: 30px;
+}
+
+
+#ool .cplusplus-logo, #bE .js-logo {
+    position: absolute;
+    top: 220px;
+    right: 75px;
+}
+
+#ool .typescript-logo {
+    position: absolute;
+    top: 470px;
+    right: 50px;
+}
+
+
+#libs .react-logo {
+    position: absolute;
+    top: 150px;
+    left: 65%;
+}
+
+#libs .jquery-logo {
+    position: absolute;
+    top: 450px;
+    left: 65%;
+}
+
+#libs .axios-logo {
+    position: absolute;
+    top: 470px;
+    right: 260px;
+}
+
+#libs .formik-logo {
+    position: absolute;
+    top: 160px;
+    right: 70px;
+}
+
+#libs .yup-logo {
+    position: absolute;
+    top: 470px;
+    right: 64px;
+}
+
+
+#frmks .bootstrap-logo {
+    position: absolute;
+    top: 150px;
+    right: 80px;
+}
+
+#frmks .express-logo {
+    position: absolute;
+    top: 450px;
+    right: 60px;
+}
+
+
+#bE .xslt-logo {
+    position: absolute;
+    top: 470px;
+    right: 80px;
+}
+
+
+#dbs .ms-sql-server-logo {
+    position: absolute;
+    top: 450px;
+    right: 60px;
+    width: 100px;
+    word-wrap: break-word;
+}
+
+
+#pts .jira-logo{
+    position: absolute;
+    top: 450px;
+    right: 230px;
+}
+
+
+@media (max-width: 1164px) {
+    .skills {
+        grid-template-columns: 40% 60%;
+    }
+
+    .drawers {
+        grid-template-columns: 150px;
+        height: 100%;
+    }
+}
+
+
+/**************** PROJECTS ******************/
+.projects {
+    background-color: #1e202a;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.projects-title {
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 450px);
+    column-gap: 70px;
+    row-gap: 40px;
+    color: rgba(245, 245, 245, 0.844);
+}
+
+.projects-container .p-tile {
+    background-color: #1e202a;
+    width: 300px;
+    height: 450px;
+    border-radius: 20px;
+    position: relative;
+}
+
+
+/* FLIP CARD CSS START */
+
+.flip-card {
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front h3 {
+    font-size: 1.60rem;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.rocket {
+    display: flex;
+    flex-direction: column;
+    font-size: 80px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FLIP CARD CSS END */
+
+
+.project-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: 210px;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+.project-title {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.project-detail {
+    font-size: 14px;
+    padding: 10px;
+    text-align: justify;
+}
+
+.whc-link {
+    text-decoration: none;
+    color: white;
+}
+
+.whc-link:hover {
+    color: white;
+}
+
+.whs-extras .project-title{
+    margin-top: 20px;
+}   
+
+
+.image-hover {
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.4;
+    bottom: 230px;
+    left: 2.5%;
+    height: 220px;
+    width: 95%;
+    cursor: pointer;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.github-icon {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    background-color: white;
+    font-size: 50px;
+    top: 37%;
+    left: 40%;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all .3s ease-in-out;
+}
+
+.github-icon:hover {
+    transform: scale(1.5);   
+}
+
+.mcs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.side-text-mcs {
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+}
+
+.mcs {
+    font-size: 20px;
+}
+
+.tech-used {
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 900px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* PROJECT SECTION STYLING ENDS */
+
+
+/* CONTACT SECTION STYLING STARTS */
+.contact {
+    position: relative;
+    background-color: #1e202a;
+    color: #51535f;
+}
+
+.connections-img {
+    margin-top: 0px;
+    width: 100%;
+    height: 95%;
+}
+
+.connect-form-placer {
+    position: absolute;
+    top: 50%;
+    width: 60%;
+    height: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    box-shadow: 0px 0px 10px 12px #d06e0c;
+    border-radius: 20px;
+}
+
+.connect-form-container {
+    position: absolute;
+    background-color: rgb(207, 195, 195);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.connect-title-div {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.connect-article {
+    margin-top: 10px;
+}
+
+.cont-info {    
+    display: grid;
+    grid-template-columns: 330px 450px;
+    column-gap: 30px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.aim-text-span {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.my-cont-info {
+    text-align: justify;
+}
+
+.form-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.contact-form {
+    position: absolute;
+    width: 90%;
+}
+
+.contact-form-input {
+    border-radius: 0 !important;
+    padding: 0.5rem !important;
+    margin: 0.8rem 0;
+    background-color: rgb(232, 219, 219) !important;
+    font-size: 1.1rem !important;
+    color: #51535f !important;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+.contact-form-input:focus {
+    border: 0.1rem solid #1e202a !important;
+}
+
+.contact-form-textarea {
+    resize: none;
+}
+
+.contact-form-btn {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 0 !important;
+    font-size: 1.2rem !important;
+    color: #51535f !important;
+    background: linear-gradient(to bottom right, #51535f 50%, rgb(232, 219, 219) 50%);
+    background-size: 300% 300%;
+    background-position: right !important;
+    border: none !important;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    transition: all 0.5s ease-out !important; 
+}
+
+.contact-form-btn:hover {
+    color: white !important;
+    background-position: left !important;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .contact {
+        height: 100vh;
+    }
+
+    .connections-img {
+        height: 100%;
+    }
+
+    .connect-form-placer {
+        width: 80%;
+        height: 90%;
+    }
+
+
+    .cont-info {
+        grid-template-columns: 1fr;
+        place-items: center;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .connect-title, .my-cont-info {
+        font-size: 2vw !important;
+    }
+
+    .aim-text-span {
+        font-size: 2vw;
+    }
+}
+/* CONTACT SECTION STYLING ENDS */
+
+
+/* REFERENCES SECTION STYLING STARTS */
+.references {
+    position: relative;
+    background-color: #1e202a;
+    color: rgb(212, 203, 203);
+}
+
+.references-container {
+    padding: 20px;
+}
+
+.references-header h2{
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.references-body {
+    display: grid;
+    grid-template-columns: repeat(3, 270px) 300px 200px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+.reference-body {
+    padding: 0;
+    list-style-type: none;
+}
+
+.reference-body li a {
+    text-decoration: none;
+    color: rgb(165, 160, 160);
+}
+
+.reference-body li a:hover {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+/* REFERENCES SECTION STYLING ENDS */
+
+
+/* FOOTER SECTION STYLING STARTS */
+
+.footer {
+    background-color: #303342;
+    overflow:hidden;
+}
+
+.footer-main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.footer-icon {
+    margin-right: 30px;
+    font-size: 35px;
+    color: rgb(165, 160, 160);
+}
+
+.footer-icon:hover {
+    color: whitesmoke;
+}
+
+.copyright {
+    color: rgb(165, 160, 160);
+    
+    margin-right: 20px;
+    text-align: center;
+}
+
+
+
+/* FOOTER SECTION STYLING ENDS */
