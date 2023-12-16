@@ -21,6 +21,10 @@
     box-shadow: produce-stars($screen-width, $total-stars, $color);
 }
 
+.text-center {
+    text-align: center;
+}
+
 .stars {
     overflow-x: hidden;
     height: 100vh;
@@ -191,8 +195,7 @@ span.auto-type {
 
 /* variables */
 $offcanvas-horizontal-width: 100vw !important;
-@import "node_modules/bootstrap/scss/bootstrap.scss";
-
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 /**************** ABOUT ******************/
 .about {
@@ -758,7 +761,7 @@ div.on .bulb::after {
     margin-left: auto;
     margin-right: auto;
     width: 95%;
-    height: 210px;
+    height: 220px;
     border-radius: 10px;
     background-size: cover;
 }
