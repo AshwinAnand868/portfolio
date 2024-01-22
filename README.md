@@ -6,4 +6,4 @@ Interactivity: Seamlessly blends static and dynamic content for user engagement.
 Gratitude: Includes links to resources used, expressing appreciation. 
 
 # Note on Responsiveness
-Currently optimized for desktop; plans for full responsiveness in the works.
+Currently optimized for desktop; plans for full responsiveness in the future.
